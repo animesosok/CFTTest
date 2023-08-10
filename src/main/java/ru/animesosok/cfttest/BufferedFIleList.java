@@ -1,6 +1,7 @@
-package org.example;
+package ru.animesosok.cfttest;
 
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.LinkedList;
@@ -15,13 +16,13 @@ public class BufferedFIleList {
     private Scanner scanner;
     private Queue<String> queue = new LinkedList<>();
 
-    public BufferedFIleList(String filename){
+    public BufferedFIleList(File file){
         try {
-            reader = new FileReader(filename);
+            reader = new FileReader(file);
             scanner = new Scanner(reader);
             fillQueue();
         } catch (Exception e) {
-            System.err.println("Can not find file: " + filename);
+            System.err.println("file read problem: " + file.getName());
         }
     }
     private void fillQueue(){

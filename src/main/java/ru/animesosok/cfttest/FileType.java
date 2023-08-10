@@ -1,2 +1,6 @@
-package ru.animesosok.cfttest;public enum FileType {
+package ru.animesosok.cfttest;
+
+public enum FileType {
+    INTEGER,
+    STRING
 }
