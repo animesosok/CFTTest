@@ -1,14 +1,14 @@
 package ru.animesosok.cfttest;
 
+import ru.animesosok.cfttest.mergesort.filelist.BufferedFIleList;
+import ru.animesosok.cfttest.mergesort.FileMergeSort;
+import ru.animesosok.cfttest.mergesort.FileType;
+
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class Main {
-    static private BufferedFIleList[] readers;
-    static private int fileNum;
-    static private FileWriter writer;
     public static void main(String[] args) throws IOException {
         boolean asc = true;
         FileType type = null;
@@ -33,7 +33,8 @@ public class Main {
                     outputFile = new File(arg);
                 }
                 catch (Exception e){
-
+                    System.err.println("Can not open output file " + arg);
+                    return;
                 }
             }
             else {
@@ -41,7 +42,7 @@ public class Main {
                     inputFiles.add(new File(arg));
                 }
                 catch (Exception e) {
-
+                    System.err.println("Can not open input file " + arg);
                 }
             }
 
@@ -62,6 +63,4 @@ public class Main {
         FileMergeSort mergeSort = new FileMergeSort(inputFiles, outputFile, asc, type);
         mergeSort.sort();
     }
-
-
 }

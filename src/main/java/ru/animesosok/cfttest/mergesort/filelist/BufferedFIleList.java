@@ -1,9 +1,10 @@
-package ru.animesosok.cfttest;
+package ru.animesosok.cfttest.mergesort.filelist;
 
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -43,5 +44,18 @@ public class BufferedFIleList {
     }
     public String remove(){
         return queue.poll();
+    }
+
+    public void close(){
+        try {
+            if (scanner != null) {
+                scanner.close();
+            }
+            if (reader != null) {
+                reader.close();
+            }
+        } catch (IOException e) {
+            System.err.println("File close error");
+        }
     }
 }

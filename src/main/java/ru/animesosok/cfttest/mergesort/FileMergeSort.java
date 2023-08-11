@@ -1,7 +1,9 @@
-package ru.animesosok.cfttest;
+package ru.animesosok.cfttest.mergesort;
+
+import ru.animesosok.cfttest.mergesort.filelist.BufferedFIleList;
+import ru.animesosok.cfttest.mergesort.sorter.Sorter;
 
 import java.io.*;
-import java.lang.reflect.Type;
 import java.util.Comparator;
 import java.util.List;
 
@@ -41,6 +43,9 @@ public class FileMergeSort {
         }
         try {
             writer.close();
+            for(var i : readers){
+                i.close();
+            }
         } catch (IOException e) {
             System.err.println("Writer close error: " + e);
         }
@@ -103,7 +108,7 @@ public class FileMergeSort {
             }
             next = sorter.pop();
             if (lastWrote != null){
-                if (comparator.compare(lastWrote, Integer.parseInt(toWrite)) < 0){
+                if (comparator.compare(lastWrote, Integer.parseInt(toWrite)) > 0){
                     System.err.println(toWrite + " more/less then " + lastWrote + ", line skipped");
                     continue;
                 }
@@ -155,7 +160,7 @@ public class FileMergeSort {
             }
             next = sorter.pop();
             if (lastWrote != null){
-                if (comparator.compare(lastWrote, toWrite) < 0){
+                if (comparator.compare(lastWrote, toWrite) > 0){
                     System.err.println(toWrite + " more/less then " + lastWrote + ", line skipped");
                     continue;
                 }

@@ -1,4 +1,4 @@
-package ru.animesosok.cfttest;
+package ru.animesosok.cfttest.mergesort.sorter;
 
 import java.util.*;
 
